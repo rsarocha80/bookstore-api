@@ -1,9 +1,24 @@
 package com.dev.bookstore.domain.entity;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Livro {
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
+@Entity
+@Table(name = "LIVROS")
+public class Livro implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	private String titulo;
@@ -12,6 +27,8 @@ public class Livro {
 
 	private String texto;
 
+	@ManyToOne
+	@JoinColumn(name = "categoria_id")
 	private Categoria categoria;
 
 	public Livro() {
