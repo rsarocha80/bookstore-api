@@ -1,4 +1,4 @@
-package com.dev.bookstore;
+package com.dev.bookstore.controller;
 
 import java.util.List;
 
