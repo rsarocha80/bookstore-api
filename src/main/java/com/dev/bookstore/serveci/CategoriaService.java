@@ -34,6 +34,7 @@ public class CategoriaService {
 		Categoria cat = findById(id);
 		cat.setNome(vo.getNome());
 		cat.setDescricao(vo.getDescricao());
+		categoriaRepository.save(cat);
 		return new CategoriaDTO(cat);
 
 	}
