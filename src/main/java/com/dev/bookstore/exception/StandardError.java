@@ -1,25 +1,27 @@
 package com.dev.bookstore.exception;
 
+import java.time.LocalDateTime;
+
 public class StandardError {
 
-	private Long timestamp;
+	private LocalDateTime timestamp;
 
 	private Integer status;
 
 	private String menssage;
 
-	public StandardError(Long timestamp, Integer status, String menssage) {
+	public StandardError(LocalDateTime timestamp, Integer status, String menssage) {
 		super();
 		this.timestamp = timestamp;
 		this.status = status;
 		this.menssage = menssage;
 	}
 
-	public Long getTimestamp() {
+	public LocalDateTime getTimestamp() {
 		return timestamp;
 	}
 
-	public void setTimestamp(Long timestamp) {
+	public void setTimestamp(LocalDateTime timestamp) {
 		this.timestamp = timestamp;
 	}
 
