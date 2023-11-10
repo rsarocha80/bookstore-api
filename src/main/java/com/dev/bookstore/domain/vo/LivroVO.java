@@ -2,7 +2,11 @@ package com.dev.bookstore.domain.vo;
 
 import java.io.Serializable;
 
+import org.hibernate.validator.constraints.Length;
+
 import com.dev.bookstore.domain.entity.Categoria;
+
+import jakarta.validation.constraints.NotEmpty;
 
 public class LivroVO implements Serializable {
 
@@ -10,10 +14,16 @@ public class LivroVO implements Serializable {
 
 	private Long id;
 
+	@NotEmpty(message = "Campo Título é obrigatório")
+	@Length(min = 3, max = 100, message = "O campo Título deve ter no mínimo de 10 e máximo de 100 caracteres")
 	private String titulo;
 
+	@NotEmpty(message = "Campo NOME DO AUTOR é obrigatório")
+	@Length(min = 10, max = 100, message = "O campo NOME DO AUTOR deve ter no mínimo de 10 e máximo de 100 caracteres")
 	private String nomeAutor;
 
+	@NotEmpty(message = "Campo TEXTO é obrigatório")
+	@Length(min = 10, max = 2000, message = "O campo TEXTO deve ter no mínimo de 10 e máximo de 100 caracteres")
 	private String texto;
 
 	private Categoria categoria;

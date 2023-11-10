@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +19,9 @@ import com.dev.bookstore.domain.entity.Livro;
 import com.dev.bookstore.domain.vo.LivroVO;
 import com.dev.bookstore.serveci.LivroService;
 
+import jakarta.validation.Valid;
+
+@CrossOrigin("*")
 @RestController
 @RequestMapping(value = "/livros")
 public class LivroController {
@@ -40,23 +44,23 @@ public class LivroController {
 	}
 
 	@PostMapping
-	public ResponseEntity<Livro> create(@RequestBody LivroVO vo) {
+	public ResponseEntity<Livro> create(@Valid @RequestBody LivroVO vo) {
 		Livro livro = service.create(vo);
 		return ResponseEntity.ok().body(livro);
 
 	}
 
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<LivroDTO> create(@PathVariable Long id, @RequestBody LivroVO vo) {
-		LivroDTO dto = service.update(id,vo);
+	public ResponseEntity<LivroDTO> create(@PathVariable Long id, @Valid @RequestBody LivroVO vo) {
+		LivroDTO dto = service.update(id, vo);
 		return ResponseEntity.ok().body(dto);
 
 	}
-	
+
 	@DeleteMapping(value = "/{id}")
-	public ResponseEntity<Void> delete(@PathVariable Long id){
+	public ResponseEntity<Void> delete(@PathVariable Long id) {
 		service.delete(id);
-		return ResponseEntity.noContent().build();		
+		return ResponseEntity.noContent().build();
 	}
 
 }
